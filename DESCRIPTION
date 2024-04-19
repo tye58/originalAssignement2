@@ -1,0 +1,16 @@
+Package: randomifyR
+Title: Produces random samples of data
+Version: 0.3.2
+Authors@R: 
+    person("Learn", "R", , "dev@arp.numbat.space", role = c("aut", "cre"))
+Description: Facilitates efficient and unbiased random sampling of data from 
+    diverse datasets. Leveraging advanced random sampling algorithms, this 
+    package enables users to extract representative subsets of data for 
+    analysis, modeling, and validation purposes.
+License: MIT + file LICENSE
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1

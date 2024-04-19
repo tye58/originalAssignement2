@@ -1,0 +1,82 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  error = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# randomifyR <img src="man/figures/logo.svg" align="right" height="139" alt="" />
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+randomifyR is an R package designed to facilitate efficient and unbiased random sampling of data from diverse datasets. Leveraging advanced random sampling algorithms, this package enables users to extract representative subsets of data for analysis, modeling, and validation purposes. With randomifyR, researchers, analysts, and data scientists can easily implement various sampling techniques, including simple random sampling, stratified sampling, and systematic sampling, among others. This package provides flexible options for specifying sampling sizes, stratification criteria, and sampling methodologies, allowing users to tailor the sampling process to suit their specific needs and objectives. Whether performing exploratory data analysis, conducting hypothesis testing, or building predictive models, randomifyR simplifies the data sampling process, enhances reproducibility, and ensures the integrity of statistical inferences.
+
+Key Features:
+
+* Implement various random sampling techniques, including simple random sampling, stratified sampling, systematic sampling, and two-stage cluster sampling.
+* Flexible options for specifying sample sizes, stratification criteria, and sampling methodologies.
+* Supports sampling from diverse data structures, including vectors, data frames, and matrices.
+* Enables efficient sampling of large datasets through optimized algorithms.
+* Integration with other R packages for seamless data analysis workflows.
+* Comprehensive documentation and examples to facilitate usage and implementation.
+
+## Examples
+
+The package offers a versatile set of sampling methods tailored to different data sampling needs. Simple random sampling, a fundamental technique, selects data points from a dataset without any predetermined pattern, ensuring each element has an equal chance of being chosen. Stratified sampling partitions the dataset into distinct strata based on predefined characteristics and then samples from each stratum proportionally to a specified weight, enhancing representativeness for diverse subgroups within the data. Systematic sampling involves selecting data points at regular intervals from an ordered list, providing a structured yet unbiased approach for large datasets. Two-stage cluster sampling first selects clusters at random and then involves simple random sampling within clusters. This is useful when the data is organized into groups or clusters, allowing for efficient sampling of large datasets. Finally, the package also provides bootstrapped sampling, a resampling technique that generates multiple random samples with replacement, facilitating the estimation of statistical properties and uncertainty assessment. These sampling methods empower users to efficiently extract meaningful insights from datasets, enabling robust analysis, modeling, and inference in various fields of research and data analysis
+
+Suppose our data is simply the letters of the alphabet
+
+```{r}
+library(randomifyR)
+data <- letters
+```
+
+
+A **simple random sample** of a specified size from a dataset can be generated with `random_sampling()`.
+
+```{r}
+sample <- random_sampling(data, size = 100)
+print(sample)
+```
+
+`stratified_sampling()` generates a **stratified random sample** of a specified size from a dataset with given strata.
+
+```{r}
+strata <- c(10, 12, 4) # Example strata sizes
+sample <- stratified_sampling(data, strata, size = 10)
+print(sample)
+```
+
+A **systematic random sample** from a dataset with a specified sampling interval can be produced with `systematic_sampling()`.
+
+```{r}
+sample <- systematic_sampling(data, interval = 5)
+print(sample)
+```
+
+**Two-stage cluster samples** can be generated using `cluster_sampling()`.
+The clusters need to be specified, along with the number of clusters to sample,
+and the number of observations to sample within each cluster.
+
+```{r}
+sample <- cluster_sampling(data, clusters = c(7, 6, 13),
+                           nclusters = 2, within_cluster = 5)
+print(sample)
+```
+
+Finally, **bootstrapped samples** of a specified size from a dataset with a specified number of folds can be obtained using `bootstrap_sampling()`.
+
+```{r}
+samples <- bootstrap_sampling(data, folds = 5)
+print(samples)
+```
