@@ -34,6 +34,7 @@ jobs:
       run: |
         Rscript -e 'devtools::install_deps(dependencies = TRUE)'
 
+
     - name: Test package
       run: |
         Rscript -e 'devtools::install()'
