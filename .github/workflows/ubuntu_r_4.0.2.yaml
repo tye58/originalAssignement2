@@ -37,5 +37,6 @@ jobs:
 
     - name: Test package
       run: |
+        Rscript -e 'R.version'
         Rscript -e 'devtools::install()'
         Rscript -e 'devtools::test()'
