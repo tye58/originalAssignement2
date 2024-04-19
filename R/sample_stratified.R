@@ -27,7 +27,7 @@ stratified_sampling <- function(data, strata, weights, size) {
   # Check if weights sum up to 1
   if (sum(weights) != 1) {
     stop("Weights do not sum up to 1")
-
+}
 
   # Initialize sample data
   sample_data <- NULL

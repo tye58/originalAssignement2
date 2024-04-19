@@ -16,7 +16,7 @@
 systematic_sampling <- function(data, interval) {
   # Check if interval is within range
   if (interval <= 0 || interval > length(data)) {
-    stop("Invalid sampling interval")
+    stop("Invalid sampling interval")}
 
   # Calculate the number of samples to select
   num_samples <- ceiling(length(data) / interval)
